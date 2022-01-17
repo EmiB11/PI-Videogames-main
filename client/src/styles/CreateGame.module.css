@@ -1,0 +1,201 @@
+
+.containerForm{
+    display: flex;
+    flex-direction: column;
+    width:50%;
+     position: relative;
+    left:25%;
+    opacity:0.85;
+    border:solid 3px grey;
+    background:linear-gradient(45deg, #082da5, #0077b6);
+    font-family:sans-serif;
+    color: #86bbd8;
+    border-radius: 20px;
+
+}
+
+.containerCreate{
+    background-image: url('https://media.istockphoto.com/vectors/vector-seamless-pattern-background-icon-vector-id1170275727?k=20&m=1170275727&s=612x612&w=0&h=O7XbyzyOdJ8MghtpK2TIaFlms4mH-C_U6aKWskD0PnQ=') ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    object-fit: contain;
+    padding-top: 20px;
+
+   
+}
+
+label {
+    display: block;
+    padding-bottom: 0.5em;
+    padding-top: 15px;
+}
+
+ .input > input , textarea {
+    width:50%;
+    box-shadow:0;
+    background: transparent;
+    color: #fff;
+}
+
+ .input {
+     
+    border-width:0 0 0.1em;
+    border-color: #fff;
+    border-style :solid;
+}
+textarea {
+    border: 0.1em solid #fff;
+    border-radius: 0.25em;
+    width: 99%;
+
+}
+
+.boton{
+      
+      color: #222;
+      text-align: center;
+      padding :0.9em;
+      box-sizing: border-box;
+      background: #054d5f80;
+      background: -moz-linear-gradient(top, #054d5f80 0%, #68687D 50%, #FFFFFF 100%);
+      background: -webkit-linear-gradient(top, #054d5f80 0%, #68687D 50%, #FFFFFF 100%);
+      background: linear-gradient(to bottom, #054d5f80 0%, #68687D 50%, #FFFFFF 100%);
+      width :50%;
+      border: 0;
+      box-shadow :none;
+      border-radius: 1.3em;
+      cursor :pointer;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      box-shadow: inset -1px 3px 8px 5px lightblue, 2px 5px 16px 0px #0B325E, 5px 5px 15px 5px rgba(0,0,0,0);
+      font-size: 20px;
+}
+.boton:hover{
+    box-shadow: 5px 5px 5px 0px #fcac5d, inset 4px 4px 15px 0px #fcac5d, 5px 5px 15px 5px rgba(243, 169, 31, 0.842); 
+}
+
+
+.input > small{
+    display:block;
+    color:rgb(221, 128, 6);
+}
+
+
+
+::placeholder {
+    color: black;
+    font-size: 1em;
+    opacity: 0.6
+  }
+
+  #inputRating{
+    width:75px
+  }
+
+  .containerP{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 60px;
+    padding-top: 10px;
+    font-family: 'Exo', sans-serif;
+    padding-bottom: 15px;
+  }
+
+  
+ .generos{
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgb(241, 154, 22);
+    
+  }
+
+  .generos > div > p {
+      
+      padding-right: 2px;
+      color:#222
+  }
+  .generos > div > button {
+    
+    color: rgb(255, 8, 0);
+    border:3px solid rgb(255, 9, 1);
+    margin:10px;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer; 
+  }
+
+  .generos > div > button:hover{
+    transition: 0.5s;
+    background:rgb(243, 19, 12);
+    color:white;
+    box-shadow: 0px 0px 40px rgb(226, 16, 16)
+  }
+
+  .generos > div{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: space-around;
+      
+     
+  }
+
+  img {
+      width: 450px;
+      height: 350px;
+      display: flex;
+      align-self:center;
+      border-radius: 40px;
+      opacity:0.8;
+  }
+
+  .botonHome{
+    width:100px;
+    height:50px;
+    border-radius: 10px;
+    background-color: #023e8a;
+    cursor: pointer;
+    opacity:0.8;
+    color:#ff6d00;
+    font-size: 20px;
+    
+}
+
+.botonHome:hover{
+    box-shadow: 5px 5px 5px 0px #ff6d00, inset 4px 4px 15px 0px #ff6d00, 5px 5px 15px 5px rgba(219, 121, 10, 0.993); 
+}
+
+ .link{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content:flex-start;
+   padding-left: 70px;
+}
+
+.selectorsG{
+    background-color: rgb(0, 0, 0);
+    font-family: 'Exo', sans-serif;
+    font-size: 15px;
+    padding:5px;
+    border-radius: 0.8em;
+    background: black;
+    color: lightblue;
+    border:3px solid lightblue;
+}
+
+.selectorsG:hover{
+    transition: 0.5s;
+    background:lightblue;
+    color: black;
+    box-shadow: 0px 0px 40px lightblue
+}
+
+.boton:disabled{
+    opacity:0.250;
+    cursor:not-allowed;
+   
+}

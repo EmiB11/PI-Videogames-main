@@ -1,0 +1,74 @@
+.container {
+    height: 100vh;
+    width: 100%;
+    object-fit: contain;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.video{
+    object-fit: cover;
+    width: 100%;
+    height: 100vh;
+    position:absolute;
+    z-index: -100;
+}
+
+.container > h1 {
+    color: white;
+    font-size: 70px;
+    font-family: "Comforter";
+    padding-bottom: 10px
+}
+
+.container > .go {
+    background:black;
+    color:white;
+    font-size: 1.25rem;
+    border-radius: 30px;
+    text-decoration: none;
+    padding: 20px 50px;
+    position: relative;
+    margin: 32px;
+    transition: transform 0.3s ease;
+    border: none;
+    font-family: "Anton";
+    margin-top: -20px;
+}
+
+.container > .go::after, .go::before {
+    content: "";
+    position: absolute;
+    opacity: 0.3;
+    background: #000;
+    border-radius: inherit;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: transform 0.3s ease;
+}
+
+.container > .go:hover {
+    transform: translate(-12px, -12px)
+}
+
+.container > .go:hover::after {
+    transform: translate(6px, 6px)
+}
+
+.container > .go:hover::before {
+    transform: translate(12px, 12px)
+}
+
+.container > h2 {
+    color: white;
+    font-size: 32px;
+    font-family: "Oswald";
+    padding-bottom: 100px;
+}
