@@ -5,7 +5,8 @@ import {GET_ALL_VIDEOGAMES ,
        FILTER_BY ,ORDER_BY,
        ORDER_GENRES,
        ORDER_RATING,
-       GET_GENRES } from './types';
+       GET_GENRES, RESET_STATE 
+      } from './types';
 
 import axios from 'axios';
 
@@ -67,3 +68,13 @@ export const getGenres = () => dispatch => {
            .then(res => res.json())
            .then(data => dispatch({type:GET_GENRES , payload: data}))
 }
+
+export const postGame = async (form) => {
+     await axios.post('http://localhost:3001/videogame',form)
+}
+export const resetState = () => {
+    return {
+        type: RESET_STATE
+    }
+}
+

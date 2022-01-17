@@ -1,14 +1,19 @@
 import React , {useEffect,useState} from 'react';
 import {useDispatch , useSelector} from 'react-redux';
-import {getAllVideogames} from '../actions';
+import {getAllVideogames  } from '../actions';
 import SearchBar from './SearchBar';
 import Cards from './Cards';
 import Paginado from './Paginado';
 import Nav from './Nav';
+import NotFound from './NotFound';
+import img from '../imgs/crash-on-the-run-tnt.gif'
+import style from '../styles/Home.module.css'
+import {IoPlayBackSharp} from 'react-icons/io5';
+import {IoPlayForwardSharp} from 'react-icons/io5'
 
 function Home() {
  const dispatch = useDispatch();
- const allVideogames= useSelector(state => state.videogames)
+ const allVideogames= useSelector(state => state.filtered)
  
  const [videogame ,] = useState(15)
  const [page , setPage] = useState(1)
@@ -21,10 +26,13 @@ function Home() {
  }
  useEffect(()=>{
      dispatch(getAllVideogames())
+     
+     
+
  },[dispatch])
 
  const nextPage = ()=>{
-     if(lastVideogame <= 100  ){
+     if(lastVideogame <= 100 && lastVideogame < allVideogames.length ){
          setPage(prev => prev + 1)
      }
  }
@@ -36,50 +44,54 @@ function Home() {
   
 if(typeof allVideogames === 'string'){
     actualVideogame = allVideogames
-}else{
+} 
+else{
     actualVideogame = allVideogames.slice(firstVideogame , lastVideogame)
 }
 
 
- const handleGoBack = () =>{
-     dispatch(getAllVideogames())
- }
- console.log(actualVideogame)
+ 
 
  
     return (
-         <div>
-             { page < 2 ? (
-                 <SearchBar />
-             )
-            : ''}
+         <div className={style.containerHome}>
+            
            <div>
             { typeof actualVideogame === 'string' ? (
                
             <div>
-            <h1>Videojuego no encontrado</h1>
-           
-            <button type = 'submit' onClick={handleGoBack}>volver</button>
-            
-          </div>
+             <NotFound />
+           </div>
                       
            )
            : actualVideogame.length > 0 ? (
-            <div>
-            <Nav />
-            <button onClick={lastPage}>anterior</button>
-            <Paginado paginado = {paginado} videogame = {videogame} allVideogames = {allVideogames.length} />
-            <button onClick={nextPage}>siguiente</button>
+           <div>
+             <div >
+            
+            <SearchBar page= {page} /> 
+            
+             </div>
+             <div className={style.nav}>
+            <Nav/>
+             </div>
+            <div className={style.containerPag}>
+            <IoPlayBackSharp className={style.prev} type='button' onClick={lastPage} />
+            <Paginado className={style.paginado} paginado = {paginado} videogame = {videogame} allVideogames = {allVideogames.length} />
+           
+            <IoPlayForwardSharp className={style.next} type='button' onClick={nextPage} />
+            </div>
+            <div className={style.containerDiv}>
             {
                actualVideogame?.map(game => (
-            <Cards key= {game.id} id={game.id} image = {game.image} name = {game.name} genres = {game.genres} />
+            <Cards key= {game.id} id={game.id} image = {game.image} name = {game.name} genres = {game.genres} rating={game.rating} />
                   ))
             }
             </div>
+            </div>
            ): (
-               <div>
-             <h1>Loading...</h1>
-             <img src='https://acegif.com/wp-content/uploads/loading-25.gif' alt ='iamgen loading'/>
+               <div className={style.loading}>
+             
+             <img  src={img} alt ='iamgen loading'/>
               </div>
            )
         }

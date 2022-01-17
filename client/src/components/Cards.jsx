@@ -1,23 +1,31 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
+import style from '../styles/Cards.module.css';
 
-function Cards({id ,image , name , genres}) {
+function Cards({id ,image , name , genres , rating}) {
 
 
     return (
-        <div>
+        <div className={style.cardContainer}>
        
-        <h3>{name}</h3>
-        
+        <h3 className={style.containerName}>{name}</h3>
+        <div className={style.gameImg}>
         {image ? (
-            <img src={image} alt="Videogame" width='200px' height='250px'/>
+            <img className={style.img} src={image} alt="Videogame" width='200px' height='250px'/>
           ) : (
-            <img src='https://previews.123rf.com/images/stockgiu/stockgiu1803/stockgiu180305664/97316128-videojuegos-retro-consolas-port%C3%A1tiles-ilustraci%C3%B3n-vectorial-dise%C3%B1o-gr%C3%A1fico.jpg' alt="Videogame" width='200px' height='250px' />
+            <img className={style.img} src='https://media.istockphoto.com/photos/neon-retro-arcade-machines-in-a-games-room-picture-id1300036832?k=20&m=1300036832&s=612x612&w=0&h=VR4Z_hBQ08X5Kvgvm-s8g5LAzKviXF1xDTDimE-_mBI=' alt="Videogame" width='200px' height='250px' />
           )}
+         </div>
+          <div className={style.containerRating}>
+
+            <span >Clasificación:  {rating}</span>
+
+          </div>
+         <div className={style.containerGenres}>
         {
             genres?.map((g, i) => {
               return ( 
-                <div key={i}>  
+                <div  key={i}>  
                { 
                typeof g === 'string'
                 ? g
@@ -26,11 +34,12 @@ function Cards({id ,image , name , genres}) {
                 </div>
             )})
         }
+          </div>
         <div>
 
         </div>
          <Link to={`/home/${id}`}>
-         <button>Detalles</button>
+         <button className={style.boton}>Más info</button>
          </Link>
         </div>
     )
