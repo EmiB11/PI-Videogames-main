@@ -42,7 +42,21 @@ const getVideogamesDb= async()=>{
  const getAllVideogames = async ()=>{
     const infoDB = await getVideogamesDb()
     const infoApi= await getVideogamesApi()
-    const allVideogames = [...infoDB , ...infoApi]
+    
+   const allInfoDb = infoDB.map(el =>{
+      return{
+        id: el.id,
+        name: el.name,
+        description: el.description,
+        released: el.released,
+        rating: el.rating,
+        platforms: el.platforms,
+        genres: el.genres.map(g => g.name),
+        createdInDb: el.createdInDb
+      }
+    })
+     
+    const allVideogames = [...allInfoDb , ...infoApi]
     return allVideogames
 }
 

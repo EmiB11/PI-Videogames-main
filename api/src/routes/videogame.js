@@ -26,7 +26,7 @@ const {name , description , image , released , rating , platforms , genres , cre
     res.send('Videojuego creado con exito')
     
   }catch(e){
-    res.send('No se pudo crear el videojuego')
+    res.status(404).send('No se pudo crear el videojuego')
   }
 
 })
