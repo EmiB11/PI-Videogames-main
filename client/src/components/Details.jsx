@@ -27,14 +27,10 @@ function Details() {
         
         if(gameDetail.platforms){
 
-          plataformas = gameDetail.platforms?.map(el => {return [ el + ' '+' | ']})
-
-        }if(gameDetail.genres){
-
-          generos = gameDetail.genres?.map(el => {return [el.name , ' ', ' | ']})
+          plataformas = gameDetail.platforms?.map(el => {return [ el  + ' | ']})
         }
-
-      } if(gameDetail.platforms[0].platform){
+       
+  } if(gameDetail.platforms[0].platform){
 
         plataformas = gameDetail.platforms?.map( el => {return [ el.platform.name , ' ' , ' | ']})
       
@@ -50,12 +46,13 @@ function Details() {
    const handleDelete = (e)=> {
        dispatch(deleteVideogame(id))
    let result=  window.confirm('Esta seguro que quiere eliminar el juego')
-     if(result){
-       alert('juego eliminado correctamente')
-      }
-      history('/home')
 
-   }
+   if(result){
+     alert('juego eliminado correctamente')
+    }
+    
+    history('/home')
+  }
     
     return (
         <div style={{backgroundImage:`url(${gameDetail.image ? gameDetail.image : img})`  , boxShadow: 'inset 0 0 0 1000px rgba(0, 0, 0, 0.6)', backgroundSize:'cover' , backgroundRepeat: 'no-repeat' , width:'100%'}}>
@@ -73,17 +70,21 @@ function Details() {
             </div>
             <div className={style.containerInfo}>
             <h1>{gameDetail.name}</h1>
-            <h4>Generos: {generos}</h4>
-            <h4> Clasificación: {gameDetail.rating}</h4>
-            <h4> Fecha de lamzamiento: {gameDetail.released}</h4>
-            <h4>Plataformas : {plataformas}</h4>
             <h2>Descripción</h2>
             <p>{gameDetail.description ? gameDetail.description : 'Sin descripción'}</p>
-              <div>
+            <h4>Generos: {generos}</h4>
+            <h4> Clasificación: {gameDetail.rating}</h4>
+            <h4> Fecha de lanzamiento: {gameDetail.released}</h4>
+            <h4>Plataformas : {plataformas}</h4>
+              <div className={style.containerBoton}>
                <button className={gameDetail.createdInDb ? style.btnDb : style.btnHidden} 
                onClick={e => handleDelete(e)}>Eliminar Videojuego
                </button>
-              </div>
+              
+              <Link to={`/home/edit/${gameDetail.id}`}>
+              <button className={gameDetail.createdInDb ? style.btnEdit : style.btnHidden}>Editar</button>
+             </Link>
+             </div >
             </div>
             
           </div>

@@ -24,7 +24,7 @@ const validate = input => {
 }
 
 function CreateVideogame() {
-    const [botonActivo , setBotonActivo] = useState(false)
+    const [botonInactivo , setBotonInactivo] = useState(false)
     const dispatch = useDispatch();
     const [input , setInput] = React.useState({
         name: '',
@@ -47,8 +47,8 @@ function CreateVideogame() {
    },[dispatch])
 
    useEffect(()=>{
-       if(error.name || error.rating || error.description || error.released || input.genres.length === 0 || input.platforms.length === 0) setBotonActivo(true)
-       else setBotonActivo(false)
+       if(error.name || error.rating || error.description || error.released || input.genres.length === 0 || input.platforms.length === 0) setBotonInactivo(true)
+       else setBotonInactivo(false)
    },[error.name ,error.rating , error.description , error.released , input.genres.length , input.platforms.length])
     
    
@@ -210,7 +210,7 @@ function CreateVideogame() {
          </form>
         </div>
        
-          <button className={style.boton} disabled={botonActivo} type= 'submit' onClick={e => handleSubmit(e)}>Crear Videojuego</button>
+          <button className={style.boton} disabled={botonInactivo} type= 'submit' onClick={e => handleSubmit(e)}>Crear Videojuego</button>
         </div>
     )
 }

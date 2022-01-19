@@ -2,11 +2,10 @@ import {GET_ALL_VIDEOGAMES ,
      GET_BY_NAME , GET_DETAILS , 
      DELETE_GAME , FILTER_BY,ORDER_BY,
      ORDER_GENRES,
-     ORDER_RATING,GET_GENRES , RESET_STATE } from '../actions/types';
+     ORDER_RATING,GET_GENRES } from '../actions/types';
 
 const initialState = {
     videogames : [],
-    copyVideogames: [],
     filtered: [],
     genres: [],
     details: {},
@@ -19,13 +18,12 @@ export default function rootReducer(state = initialState , action){
         case GET_ALL_VIDEOGAMES: return {
             ...state ,
             videogames: action.payload,
-            copyVideogames: action.payload,
             filtered: action.payload
         }
         case GET_BY_NAME:
              return {
             ...state,
-          copyVideogames: action.payload,
+          videogames: action.payload,
           filtered: action.payload
         }
         case GET_DETAILS: 
@@ -45,24 +43,24 @@ export default function rootReducer(state = initialState , action){
         }
         case FILTER_BY: 
         if (action.payload === 'default'){
-            return {...state, filtered: [...state.copyVideogames]}
+            return {...state, filtered: [...state.videogames]}
             }
           
         if(action.payload === 'created'){
-            return {...state, filtered: state.copyVideogames.filter((game)=> (typeof game.id) === 'string')}
+            return {...state, filtered: state.videogames.filter((game)=> (typeof game.id) === 'string')}
             }
           
         if(action.payload === 'api'){
-            return {...state, filtered: state.copyVideogames.filter((game)=> (typeof game.id) === 'number')}
+            return {...state, filtered: state.videogames.filter((game)=> (typeof game.id) === 'number')}
             }
             break
          
         case ORDER_GENRES:
-         const games = state.copyVideogames
+         const games = state.videogames
         const filterGenres =  games.filter(g => g.genres.includes(action.payload))
          return {
              ...state,
-             filtered: action.payload === 'todos' ? state.copyVideogames : filterGenres.length > 0  ? filterGenres  : 'Erro404' 
+             filtered: action.payload === 'todos' ? state.videogames : filterGenres.length > 0  ? filterGenres  : 'Erro404' 
          }
          case ORDER_BY:
             if(action.payload === 'A-Z'){
@@ -79,7 +77,7 @@ export default function rootReducer(state = initialState , action){
                     return 0
                 })}}
             else {
-                  return {...state, filtered: state.copyVideogames}
+                  return {...state, filtered: state.videogames}
 
                 };
 
@@ -92,16 +90,10 @@ export default function rootReducer(state = initialState , action){
                 return {...state, filtered: [...state.filtered].sort((a,b) => b.rating - a.rating)}
                 }     
             else {
-                return {...state, filtered: state.copyVideogames}
+                return {...state, filtered: state.videogames}
                 };
 
-           case RESET_STATE:
-               return {
-                   details: initialState.details
-               }
-            
-           
-
-        default: return state;
+          
+             default: return state;
     }
 }

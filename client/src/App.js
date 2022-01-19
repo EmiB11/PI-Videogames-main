@@ -4,6 +4,7 @@ import LandingPage from './components/LandingPage';
 import Home from './components/Home';
 import CreateVideogame from './components/CreateVideogame';
 import Details from './components/Details';
+import EditVideogame from './components/EditVideogame';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
        <Route path = '/home' element = {<Home />} />
        <Route path = '/videogame' element = {<CreateVideogame />} />
        <Route path = '/home/:id' element = {<Details />} />
+       <Route path = '/home/edit/:id' element = {<EditVideogame />} />
      </Routes>
      </BrowserRouter>
     </div>

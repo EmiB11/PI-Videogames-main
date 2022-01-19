@@ -8,4 +8,4 @@ export const ORDER_GENRES = 'ORDER_GENRES';
 export const ORDER_RATING = 'ORDER_RATING';
 export const GET_GENRES = 'GET_GENRES';
 export const POST_GAME = 'POST_GAME';
-export const RESET_STATE = 'RESET_STATE';
+export const EDIT_GAME = 'EDIT_GAME'

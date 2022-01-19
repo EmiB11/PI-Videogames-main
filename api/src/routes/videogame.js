@@ -7,12 +7,11 @@ const axios = require('axios');
 const router = Router();
 
 router.post('/' ,async (req, res)=>{
-const {name , description , image , released , rating , platforms , genres , createdInDb}= req.body
+const {name , description ,  released , rating , platforms , genres , createdInDb}= req.body
   try{
     const createVideogame = await Videogame.create({
         name,
         description,
-        image,
         released , 
         rating , 
         platforms ,
@@ -62,7 +61,8 @@ router.get('/:id' , (req , res)=>{
 })
 
 router.delete('/:id' , (req , res)=>{
-    const {id} = req.params
+    const {id} = req.params;
+
     Videogame.destroy({
         where: {id}
     })
@@ -72,11 +72,12 @@ router.delete('/:id' , (req , res)=>{
 
 router.put('/:id' , (req , res)=> {
     const {id} = req.params;
-    const {name , image ,released, rating , platforms } = req.body
+    const {name ,released, rating ,description, platforms } = req.body;
+
     Videogame.findByPk(id).then(game => {
         game.update({
           name,
-          image,
+          description,
           released,
           rating,
           platforms

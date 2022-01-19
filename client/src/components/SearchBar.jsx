@@ -31,7 +31,7 @@ function SearchBar({page}) {
 
     return (
          <div className={style.containerSearch}>
-             <form onSubmit={e => handleSubmit(e)}>
+             <form onSubmit={(e) => handleSubmit(e)}>
              <button id={style.btnAll} className={style.Sbuton}  onClick={e => handleOnClickAll(e) }>Cargar todos los juegos</button>
              <div className={style.containerInput} style={{visibility: visibilityState}}>
              <input className={style.search} type= 'text' placeholder = 'Buscar juego...' value={name} onChange={e => handleFindName(e)}/>
