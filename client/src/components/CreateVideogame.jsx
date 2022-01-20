@@ -165,17 +165,17 @@ function CreateVideogame() {
           <div className={style.input}>
           <label>NOMBRE:</label>
           {error.name ? <small>{error.name}</small> : ''}
-          <input  type ='text' value= {input.name} name= 'name'  onChange={handleChange }  />
+          <input  type ='text' value= {input.name} name= 'name'  onChange={handleChange } required />
          </div>
          <div className={style.input}>
           <label>CLASIFICACIÓN:</label>
           {error.rating ? <small>{error.rating}</small> : ''}
-          <input id={style.inputRating} type ='number' value= {input.rating} name= 'rating' min='1' max='5' placeholder= 'del 1 al 5' onChange={handleChange }  />
+          <input id={style.inputRating} type ='number' value= {input.rating} name= 'rating' min='1' max='5' placeholder= 'del 1 al 5' onChange={handleChange } required />
          </div>
          <div className={style.input}>
           <label>FECHA DE CREACIÓN:</label>
           {error.released ? <small>{error.released}</small> : ''}
-          <input type ='date' value= {input.released} name= 'released'  onChange={handleChange }  />
+          <input type ='date' value= {input.released} name= 'released'  onChange={handleChange }  required/>
          </div>
          <div className={style.input} >
           <label>DESCRIPCIÓN:</label>

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {useDispatch} from 'react-redux';
-import {getVideogameByName , getAllVideogames} from '../actions';
+import {getVideogameByName , getAllVideogames } from '../actions';
 import style from '../styles/Search.module.css';
 import {Link} from 'react-router-dom';
 
@@ -15,6 +15,7 @@ function SearchBar({page}) {
         e.preventDefault()
         if(name.length){
             dispatch(getVideogameByName(name))
+          
             setName('')
         }else{
             alert('No se ingreso ningun nombre')

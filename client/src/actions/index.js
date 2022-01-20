@@ -5,8 +5,8 @@ import {GET_ALL_VIDEOGAMES ,
        FILTER_BY ,ORDER_BY,
        ORDER_GENRES,
        ORDER_RATING,
-       GET_GENRES
-      } from './types';
+       GET_GENRES,
+     SEARCH_PLATFORM } from './types';
 
 import axios from 'axios';
 
@@ -77,3 +77,4 @@ export const updateGame= async (id , form) => {
      await axios.put(`http://localhost:3001/videogame/${id}`, form)
                   
 }
+

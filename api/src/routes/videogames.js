@@ -72,7 +72,7 @@ router.get('/' ,async (req , res)=>{
         if(videogamesQuery.data.count === 0) return res.status(404).json('videojuego no encontrado')
 
         else{
-        const response = videogamesQuery.data.results.map((game , index)=>{
+        const response = videogamesQuery.data.results.map((game )=>{
                 
                   return {
                     id: game.id,
@@ -99,7 +99,7 @@ router.get('/' ,async (req , res)=>{
       return  res.json(allVideogames)
     }
   }catch(e){
-      res.status(404).json(e)
+      res.status(404).json('ups, algo salió mal')
   }
 })
 

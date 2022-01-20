@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
 import {Link} from 'react-router-dom';
 import style from '../styles/Cards.module.css';
-import imgCard from '../imgs/fondoCard.jpg'
+import imgCard from '../imgs/fondoCard.jpg';
+
 function Cards({id ,image , name , genres , rating}) {
 
 

@@ -27,16 +27,14 @@ function Home() {
  useEffect(()=>{
      dispatch(getAllVideogames())
      
-     
-
- },[dispatch])
+     },[dispatch])
 
  const nextPage = ()=>{
      if(lastVideogame <= 100 && lastVideogame < allVideogames.length ){
          setPage(prev => prev + 1)
      }
  }
- const lastPage = ()=>{
+ const previousPage = ()=>{
      if(firstVideogame > 0 ){
         setPage(prev => prev - 1)
      }
@@ -75,7 +73,7 @@ else{
             <Nav/>
              </div>
             <div className={style.containerPag}>
-            <IoPlayBackSharp className={style.prev} type='button' onClick={lastPage} />
+            <IoPlayBackSharp className={style.prev} type='button' onClick={previousPage} />
             <Paginado className={style.paginado} paginado = {paginado} videogame = {videogame} allVideogames = {allVideogames.length} />
            
             <IoPlayForwardSharp className={style.next} type='button' onClick={nextPage} />

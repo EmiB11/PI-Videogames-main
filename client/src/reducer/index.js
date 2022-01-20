@@ -2,7 +2,7 @@ import {GET_ALL_VIDEOGAMES ,
      GET_BY_NAME , GET_DETAILS , 
      DELETE_GAME , FILTER_BY,ORDER_BY,
      ORDER_GENRES,
-     ORDER_RATING,GET_GENRES } from '../actions/types';
+     ORDER_RATING,GET_GENRES, SEARCH_PLATFORM } from '../actions/types';
 
 const initialState = {
     videogames : [],
@@ -92,7 +92,7 @@ export default function rootReducer(state = initialState , action){
             else {
                 return {...state, filtered: state.videogames}
                 };
-
+            
           
              default: return state;
     }
