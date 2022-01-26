@@ -2,7 +2,7 @@ import {GET_ALL_VIDEOGAMES ,
      GET_BY_NAME , GET_DETAILS , 
      DELETE_GAME , FILTER_BY,ORDER_BY,
      ORDER_GENRES,
-     ORDER_RATING,GET_GENRES, SEARCH_PLATFORM } from '../actions/types';
+     ORDER_RATING,GET_GENRES, RESET_DETAILS ,RESET_VIDEOGAMES } from '../actions/types';
 
 const initialState = {
     videogames : [],
@@ -47,7 +47,9 @@ export default function rootReducer(state = initialState , action){
             }
           
         if(action.payload === 'created'){
-            return {...state, filtered: state.videogames.filter((game)=> (typeof game.id) === 'string')}
+            const gamesCreate = state.videogames;
+            const filterGames = gamesCreate.filter((game)=> (typeof game.id) === 'string')
+            return {...state, filtered:  filterGames.length > 0 ? filterGames : 'NO hay juegos creados'}
             }
           
         if(action.payload === 'api'){
@@ -93,6 +95,17 @@ export default function rootReducer(state = initialState , action){
                 return {...state, filtered: state.videogames}
                 };
             
+          case RESET_DETAILS : return {
+              ...state,
+              details: action.payload,
+              
+          }
+
+          case RESET_VIDEOGAMES: return{
+              ...state,
+              videogames: action.payload,
+              filtered: action.payload
+          }
           
              default: return state;
     }

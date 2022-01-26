@@ -1,13 +1,15 @@
 import React from 'react'
 import {useDispatch} from 'react-redux'
+
 import img from '../imgs/crash404.gif'
-import {getAllVideogames} from '../actions'
+import {getAllVideogames, resetVideogames} from '../actions'
 import style from '../styles/NotFound.module.css';
 
 function NotFound() {
  const dispatch = useDispatch()
  const handleGoBack = () =>{
-    dispatch(getAllVideogames())
+    dispatch(resetVideogames([]))
+    dispatch( getAllVideogames())
 }
     return (
         <div className={style.container404}>

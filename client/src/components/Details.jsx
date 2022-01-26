@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react'
 import{Link , useNavigate ,useParams} from 'react-router-dom'
-import {getDetails , deleteVideogame } from '../actions';
+import {getDetails , deleteVideogame ,resetState} from '../actions';
 import {useDispatch , useSelector} from 'react-redux';
 import img from '../imgs/fondoCard.jpg'
-import imgLoad from '../imgs/crash-on-the-run-tnt.gif'
+import imgLoad from '../imgs/imagenloading.gif'
 import style from '../styles/Details.module.css';
 
 function Details() {
@@ -15,6 +15,9 @@ function Details() {
     useEffect(()=>{
     dispatch(getDetails(id))
      
+    return ()=>{
+     dispatch(resetState({}))
+    }
     
     }, [dispatch , id])
 
@@ -65,17 +68,18 @@ function Details() {
               <button className={style.btnHome}>volver</button>
              </Link>
             </div>
+            
+            <div className={style.containerInfo}>
             <div className={style.imagen}>
             <img src= {gameDetail.image ? gameDetail.image : img} alt = 'imagen videojuego' />
             </div>
-            <div className={style.containerInfo}>
             <h1>{gameDetail.name}</h1>
             <h2>Descripción</h2>
             <p>{gameDetail.description ? gameDetail.description : 'Sin descripción'}</p>
-            <h4>Generos: {generos}</h4>
-            <h4> Clasificación: {gameDetail.rating}</h4>
-            <h4> Fecha de lanzamiento: {gameDetail.released}</h4>
-            <h4>Plataformas : {plataformas}</h4>
+            <h4>Generos: <strong style={{backgroundColor:'#ff6d00' , color:'#023e8a'}}>{generos}</strong></h4>
+            <h4> Clasificación: <strong style={{backgroundColor:'#ff6d00' , color:'#023e8a'}}>{gameDetail.rating}</strong></h4>
+            <h4> Fecha de lanzamiento: <strong style={{backgroundColor:'#ff6d00' , color:'#023e8a'}}>{gameDetail.released}</strong></h4>
+            <h4>Plataformas : <strong style={{backgroundColor:'#ff6d00' , color:'#023e8a'}}> {plataformas}</strong></h4>
               <div className={style.containerBoton}>
                <button className={gameDetail.createdInDb ? style.btnDb : style.btnHidden} 
                onClick={e => handleDelete(e)}>Eliminar Videojuego

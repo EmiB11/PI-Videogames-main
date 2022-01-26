@@ -5,6 +5,7 @@ import Home from './components/Home';
 import CreateVideogame from './components/CreateVideogame';
 import Details from './components/Details';
 import EditVideogame from './components/EditVideogame';
+import NotFound from './components/NotFound';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
        <Route path = '/videogame' element = {<CreateVideogame />} />
        <Route path = '/home/:id' element = {<Details />} />
        <Route path = '/home/edit/:id' element = {<EditVideogame />} />
+      
      </Routes>
      </BrowserRouter>
     </div>

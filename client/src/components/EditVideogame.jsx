@@ -1,5 +1,5 @@
 import React , {useEffect , useState}from 'react'
-import {useDispatch , } from 'react-redux';
+import {useDispatch ,useSelector } from 'react-redux';
 import {updateGame  ,getAllVideogames} from '../actions';
 import{Link , useNavigate ,useParams} from 'react-router-dom'
 import style from '../styles/CreateGame.module.css';
@@ -24,14 +24,15 @@ const validate = input => {
 }
 
 function EditVideogame() {
+    const gameDetail = useSelector(state => state.details)
     const [botonActivo , setBotonActivo] = useState(false)
     const dispatch = useDispatch();
     const [input , setInput] = React.useState({
-        name: '',
-        released: '',
-        rating: 0,
+        name: gameDetail.name,
+        released: gameDetail.released,
+        rating: gameDetail.rating,
         platforms: [],
-        description: '',
+        description: gameDetail.description,
         
     })
    const {id} = useParams()

@@ -15,7 +15,7 @@ li {
     width: 40px;
 }
 
-.pagBoton{
+.boton {
     font-family: 'Press Start 2P';
     font-size: larger;
     text-align: center;
@@ -35,7 +35,7 @@ li {
     
 }
 
-.pagBoton:hover {
+.boton:hover {
     text-align: center;
     user-select: none;
     font-size: 14px;
@@ -50,4 +50,35 @@ li {
     border-color: #054d5f80;
     transform: scale(1.3,1.3);
     
+}
+
+.pagBoton{
+    font-family: 'Press Start 2P';
+    font-size: larger;
+    text-align: center;
+    user-select: none;
+    margin: 15px 5px;
+    width: 32px;
+    display: block;
+    padding: 0.4rem .3rem;
+    text-decoration: none;
+    border: 2px solid #d7d7d7; /* 2px */
+    background-color: #fcac5d;
+    color: #013620;
+    border-radius: 0.2rem;
+    border-color: #054d5f80;
+}
+.pagBoton:focus{
+    text-align: center;
+    user-select: none;
+    
+    width: 32px;
+   
+    text-decoration: none;
+    border-radius: 0.2rem;
+    border: 2px solid #d7d7d7; /* 2px */
+    background-color: #fcac5d;
+    color: #013620;
+    
+    border-color: #054d5f80;
 }

@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
 import {useDispatch} from 'react-redux';
-import {getVideogameByName , getAllVideogames } from '../actions';
+import {getVideogameByName , getAllVideogames ,resetVideogames} from '../actions';
 import style from '../styles/Search.module.css';
 import {Link} from 'react-router-dom';
 
-function SearchBar({page}) {
+function SearchBar({ setPage}) {
+    
     const dispatch = useDispatch();
     const [name , setName] = useState('')
     
@@ -14,8 +15,8 @@ function SearchBar({page}) {
     const handleSubmit = (e)=>{
         e.preventDefault()
         if(name.length){
+            setPage(1)
             dispatch(getVideogameByName(name))
-          
             setName('')
         }else{
             alert('No se ingreso ningun nombre')
@@ -24,20 +25,20 @@ function SearchBar({page}) {
     }
     const handleOnClickAll = (e) => {
         e.preventDefault()
+        dispatch(resetVideogames([]))
         dispatch(getAllVideogames())
        }
       console.log(name)
       
-      let visibilityState = page < 2 ? "visible" : "hidden";
+     
 
     return (
          <div className={style.containerSearch}>
-             <form onSubmit={(e) => handleSubmit(e)}>
              <button id={style.btnAll} className={style.Sbuton}  onClick={e => handleOnClickAll(e) }>Cargar todos los juegos</button>
-             <div className={style.containerInput} style={{visibility: visibilityState}}>
+             <form className={style.containerInput} onSubmit={ handleSubmit}>
              <input className={style.search} type= 'text' placeholder = 'Buscar juego...' value={name} onChange={e => handleFindName(e)}/>
              <button className={style.Sbuton} onClick={e => handleSubmit(e)}>Buscar</button>
-             </div>
+             
              </form>
              <div className={style.containerBtn}>
             <Link to='/videogame' >

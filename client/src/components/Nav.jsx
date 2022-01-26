@@ -3,7 +3,7 @@ import {useDispatch , useSelector} from 'react-redux';
 import {getGenres , orderBy ,orderRating , filterBy , orderGenres} from '../actions';
 import style from '../styles/Nav.module.css';
 
-function Nav() {
+function Nav({setPage}) {
  const dispatch = useDispatch()
  const allGenres = useSelector(state => state.genres)
   
@@ -12,19 +12,23 @@ function Nav() {
  },[dispatch])
 
  const handleOrderBy = (e) =>{
+     setPage(1)
      dispatch(orderBy(e.target.value))
  }
 
  const handleOrderRating = e => {
+     setPage(1)
      dispatch(orderRating(e.target.value))
  }
 
  const handleFilterBy  = e => {
+     setPage(1)
      dispatch(filterBy(e.target.value))
  }
 
  const handleOrderGenres = e => {
-     console.log(orderGenres(e.target.value))
+     
+     setPage(1)
      dispatch(orderGenres(e.target.value))
  }
 

@@ -4,7 +4,7 @@
     background-size: cover;
     height: 100vh;
     width: 100%;
-    object-fit: contain;
+    
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -37,4 +37,9 @@ h1 {
 
 .boton:hover{
     box-shadow: 5px 5px 5px 0px #fcac5d, inset 4px 4px 15px 0px #fcac5d, 5px 5px 15px 5px rgba(243, 169, 31, 0.842); 
+  }
+
+  .container404 > img {
+    width: 250px;
+    height: 250px;
   }

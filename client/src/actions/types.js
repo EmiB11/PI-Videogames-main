@@ -9,3 +9,5 @@ export const ORDER_RATING = 'ORDER_RATING';
 export const GET_GENRES = 'GET_GENRES';
 export const POST_GAME = 'POST_GAME';
 export const EDIT_GAME = 'EDIT_GAME'
+export const RESET_DETAILS = 'RESET_DETAILS';
+export const RESET_VIDEOGAMES = 'RESET_VIDEOGAMES';

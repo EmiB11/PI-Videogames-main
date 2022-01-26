@@ -6,7 +6,7 @@ import {GET_ALL_VIDEOGAMES ,
        ORDER_GENRES,
        ORDER_RATING,
        GET_GENRES,
-     SEARCH_PLATFORM } from './types';
+    RESET_DETAILS, RESET_VIDEOGAMES } from './types';
 
 import axios from 'axios';
 
@@ -78,3 +78,16 @@ export const updateGame= async (id , form) => {
                   
 }
 
+export const resetState = payload =>{
+    return {
+        type: RESET_DETAILS,
+        payload
+    }
+}
+
+export const resetVideogames = payload =>{
+    return {
+        type: RESET_VIDEOGAMES,
+        payload
+    }
+}

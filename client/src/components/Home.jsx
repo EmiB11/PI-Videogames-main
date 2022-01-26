@@ -1,12 +1,12 @@
 import React , {useEffect,useState} from 'react';
 import {useDispatch , useSelector} from 'react-redux';
-import {getAllVideogames  } from '../actions';
+import {getAllVideogames , resetVideogames } from '../actions';
 import SearchBar from './SearchBar';
 import Cards from './Cards';
 import Paginado from './Paginado';
 import Nav from './Nav';
 import NotFound from './NotFound';
-import img from '../imgs/crash-on-the-run-tnt.gif'
+import img from '../imgs/imagenloading.gif'
 import style from '../styles/Home.module.css'
 import {IoPlayBackSharp} from 'react-icons/io5';
 import {IoPlayForwardSharp} from 'react-icons/io5'
@@ -14,7 +14,7 @@ import {IoPlayForwardSharp} from 'react-icons/io5'
 function Home() {
  const dispatch = useDispatch();
  const allVideogames= useSelector(state => state.filtered)
- 
+ const videogames = useSelector(state => state.videogames)
  const [videogame ,] = useState(15)
  const [page , setPage] = useState(1)
  let lastVideogame = videogame * page
@@ -26,7 +26,9 @@ function Home() {
  }
  useEffect(()=>{
      dispatch(getAllVideogames())
-     
+     return ()=>{
+         dispatch(resetVideogames([]))
+     }
      },[dispatch])
 
  const nextPage = ()=>{
@@ -66,15 +68,15 @@ else{
            <div>
              <div >
             
-            <SearchBar page= {page} /> 
+            <SearchBar setPage = {setPage}/> 
             
              </div>
              <div className={style.nav}>
-            <Nav/>
+            <Nav setPage={setPage}/>
              </div>
             <div className={style.containerPag}>
             <IoPlayBackSharp className={style.prev} type='button' onClick={previousPage} />
-            <Paginado className={style.paginado} paginado = {paginado} videogame = {videogame} allVideogames = {allVideogames.length} />
+            <Paginado className={style.paginado} paginado = {paginado} videogame = {videogame} allVideogames = {allVideogames.length} page = {page}/>
            
             <IoPlayForwardSharp className={style.next} type='button' onClick={nextPage} />
             </div>
@@ -85,6 +87,7 @@ else{
                   ))
             }
             </div>
+            
             </div>
            ): (
                <div className={style.loading}>
